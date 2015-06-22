@@ -30,14 +30,9 @@ App::uses('AppController', 'Controller');
  */
 class HomeController extends AppController {
 
-	public function display() {
-		echo "enfoiéé";
-		die();
-	}
-
 	public function dat() {
 		echo "date";
-		die();
+
 	}
 
 }

@@ -29,13 +29,17 @@ App::uses('AppController', 'Controller');
  * @link http://book.cakephp.org/2.0/en/controllers/pages-controller.html
  */
 class PagesController extends AppController {
+<<<<<<< HEAD
 
 	public $uses = array('Video');
 
 	public function display() {
+=======
+>>>>>>> 097a5017f4b7350673293bee1c0710ed48650e69
 
-	}
+    public function display() {
 
+<<<<<<< HEAD
 	function index() {
 
 			$d['video'] = current($this->Video->find('first'));
@@ -44,4 +48,7 @@ class PagesController extends AppController {
 			$this->set($d);
 		}
 
+=======
+    }
+>>>>>>> 097a5017f4b7350673293bee1c0710ed48650e69
 }
