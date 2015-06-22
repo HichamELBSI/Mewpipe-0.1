@@ -29,8 +29,19 @@ App::uses('AppController', 'Controller');
  * @link http://book.cakephp.org/2.0/en/controllers/pages-controller.html
  */
 class PagesController extends AppController {
-public function display() {
+
+	public $uses = array('Video');
+
+	public function display() {
 
 	}
+
+	function index() {
+
+			$d['video'] = current($this->Video->find('first'));
+			$d['videos'] = $this->Video->find('all');
+
+			$this->set($d);
+		}
 
 }
