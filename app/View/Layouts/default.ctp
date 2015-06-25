@@ -27,12 +27,24 @@
           <a class="navbar-brand" href="#">Mewpipe</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
+          <?php echo $this->Form->create('Home', array('class'=>'navbar-form navbar-left','action'=>'search'));
+
+            echo $this->Form->input('search',array('label' => false,'class' => 'form-control','div'=>array('class'=>'form-group')));
+
+            $options = array(
+                    'label' => 'Search video',
+                    'class' => 'btn btn-default',
+                    'div' => false
+                );
+            echo $this->Form->end($options); ?>
+          <?php if (AuthComponent::user('id')): ?>
+              <p class="navbar-text navbar-right">Signed in as <a href="#" class="navbar-link">Mark Otto</a></p>
+          <?php endif; ?>
+          <?php if (!AuthComponent::user('id')): ?>
+              <a href="login" class="btn btn-default navbar-btn navbar-right">Sign in</a>
+          <?php endif; ?>
         </div><!--/.nav-collapse -->
+          
       </div>
     </nav>
 
