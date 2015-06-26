@@ -27,7 +27,8 @@
 	}
 
 	public function show() {
-		$d['selected'] = current($this->Video->find('first', array('conditions' => array('Video.id' => 1))));
+		var_dump($this->request->pass['0']);
+		$d['selected'] = current($this->Video->find('first', array('conditions' => array('Video.id' => $this->request->pass['0']))));
 		$d['selected']['views'] += 1;
 		$this->Video->save($d['selected']);
         $this->set($d);
