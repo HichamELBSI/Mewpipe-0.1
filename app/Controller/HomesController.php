@@ -1,6 +1,6 @@
 <?php class HomesController extends AppController {
 
-	public $uses = array('Video');
+	public $uses = array('Video','Comment');
 
 	public function beforeFilter() {
 		parent::beforeFilter();
@@ -15,24 +15,23 @@
 	}
 
 	public function search() {
-		$d['searchvideos'] = $this->Video->find('all',  array('conditions' => array('OR' => array(
-    		array("Video.name LIKE" => "%".$this->request->data('Home')['search']."%"),
-    		array("Video.description LIKE" => "%".$this->request->data('Home')['search']."%")
+		$d['searchvideos'] = $this->Video->find('all',  array('conditions' => array(
+    		"Video.status " => 0,
+    		'OR' => array(
+	    		array("Video.name LIKE" => "%".$this->request->data('Home')['search']."%"),
+	    		array("Video.description LIKE" => "%".$this->request->data('Home')['search']."%")
 		))));
-		$d['nbr'] = $this->Video->find('count',  array('conditions' => array('OR' => array(
-    		array("Video.name LIKE" => "%".$this->request->data('Home')['search']."%"),
-    		array("Video.description LIKE" => "%".$this->request->data('Home')['search']."%")
-		))));
+		$d['related'] = ($this->request->data('Home')['search']);
+		$d['nbr'] = count($d['searchvideos']);;
 		$this->set($d);
 	}
 
 	public function show() {
-		var_dump($this->request->pass['0']);
 		$d['selected'] = current($this->Video->find('first', array('conditions' => array('Video.id' => $this->request->pass['0']))));
+		$d['comments'] = $this->Comment->find('all', array('conditions' => array('Comment.videos_id' => $this->request->pass['0'])));
 		$d['selected']['views'] += 1;
 		$this->Video->save($d['selected']);
         $this->set($d);
 	}
-}
 
-?>
+} ?>
