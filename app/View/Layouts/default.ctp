@@ -33,10 +33,11 @@
                 );
             echo $this->Form->end($options); ?>
           <?php if (AuthComponent::user('id')): ?>
-              <p class="navbar-text navbar-right">Signed in as <a href="#" class="navbar-link">Mark Otto</a></p>
+              <!--<p class="navbar-text navbar-right">Signed in as <a href="#" class="navbar-link">Mark Otto</a></p>-->
+              <a href="<?php echo $this->Html->url('/users/logout'); ?>" class="btn btn-default navbar-btn navbar-right">Log out</a>
           <?php endif; ?>
           <?php if (!AuthComponent::user('id')): ?>
-              <a href="login" class="btn btn-default navbar-btn navbar-right">Sign in</a>
+              <a href="<?php echo $this->Html->url('/users/login'); ?>" class="btn btn-default navbar-btn navbar-right">Log in</a>
           <?php endif; ?>
         </div><!--/.nav-collapse -->
           

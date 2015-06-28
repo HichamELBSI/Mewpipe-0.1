@@ -26,8 +26,7 @@ class UsersController extends AppController
     }
 
     public function login()
-    {
-
+    {   //debug($this->Session->read());
         //if already logged-in, redirect
         if ($this->Session->check('Auth.User')) {
             $this->redirect(array('action' => 'index'));
@@ -47,7 +46,9 @@ class UsersController extends AppController
 
     public function logout()
     {
-        $this->redirect($this->Auth->logout());
+        //$this->redirect($this->Auth->logout());
+        $this->Auth->logout();
+        return $this->redirect($this->Auth->redirectUrl());
     }
 
     public function add()
