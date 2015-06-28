@@ -27,7 +27,7 @@ class UsersController extends AppController
 
     public function login()
     {   //debug($this->Session->read());
-        //if already logged-in, redirect
+        //if already logged-in, redirect²
         if ($this->Session->check('Auth.User')) {
             $this->redirect(array('action' => 'index'));
         }
