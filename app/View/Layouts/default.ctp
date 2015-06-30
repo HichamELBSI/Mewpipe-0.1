@@ -4,6 +4,10 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="<?php echo $this->Html->url('/css/bootstrap.min.css'); ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo $this->Html->url('/css/logincss.css'); ?>">
+      <link rel="stylesheet" type="text/css" href="<?php echo $this->Html->url('/css/usercss.css'); ?>">
+      <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+      <script type="text/javascript" src="<?php echo $this->Html->url('/js/loginjs.js'); ?>"></script>
     <title><?php echo $title_for_layout; ?></title>
   </head>
 
@@ -37,10 +41,14 @@
               <a href="<?php echo $this->Html->url('/users/logout'); ?>" class="btn btn-default navbar-btn navbar-right">Log out</a>
           <?php endif; ?>
           <?php if (!AuthComponent::user('id')): ?>
+
+              <!--button type="button" class="btn btn-default navbar-btn navbar-right" data-toggle="modal" data-target="<!--?php echo $this->Html->url('/users/login2$myModal'); ?>">
+                  Login modal
+              </button-->
               <a href="<?php echo $this->Html->url('/users/login'); ?>" class="btn btn-default navbar-btn navbar-right">Log in</a>
           <?php endif; ?>
         </div><!--/.nav-collapse -->
-          
+
       </div>
     </nav>
 
