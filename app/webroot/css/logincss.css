@@ -1,5 +1,8 @@
+#myModal{
+    margin-top: 100px;
+}
+
 body {
-    padding-top: 0px;
 }
 .panel-login {
     border-color: #ccc;
@@ -97,3 +100,4 @@ body {
     background-color: #1CA347;
     border-color: #1CA347;
 }
+
