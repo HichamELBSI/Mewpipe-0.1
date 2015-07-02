@@ -1,6 +1,7 @@
 <?php class HomesController extends AppController {
 
 	public $uses = array('Video','Comment');
+	public $helpers = array('SocialShare.SocialShare');
 
 	public function beforeFilter() {
 		parent::beforeFilter();
@@ -8,14 +9,15 @@
 	}
 
 	public function index() {
-		$d['video'] = current($this->Video->find('first'));
-		$d['videos']= $this->Video->find('all');
+		$d['videos']= $this->Video->find('all',array('conditions' => array("Video.status " => 0)), array('order' =>array('Video.views DESC')));
 		$this->set($d);
+		//$log = $this->Video->getDataSource()->getLog(false, false);
+		//debug($log);
 		$this->set('authUser', $this->Auth->user());
 	}
 
 	public function search() {
-		$d['searchvideos'] = $this->Video->find('all',  array('conditions' => array(
+		$d['searchvideos'] = $this->Video->find('all',array('order' =>array('Video.views DESC')),  array('conditions' => array(
     		"Video.status " => 0,
     		'OR' => array(
 	    		array("Video.name LIKE" => "%".$this->request->data('Home')['search']."%"),
@@ -27,7 +29,6 @@
 	}
 
 	public function show() {
-		
 		$d['selected'] = current($this->Video->find('first', array('conditions' => array('Video.id' => $this->request->pass['0']))));
 		$d['comments'] = $this->Comment->find('all', array('conditions' => array('Comment.videos_id' => $this->request->pass['0'])));
 		if(isset($this->request->pass['1'])) {
@@ -52,6 +53,10 @@
 		$d['selected']['views'] += 1;
 		$this->Video->save($d['selected']);
         $this->set($d);
+	}
+
+	public function upload() {
+		
 	}
 
 } ?>
