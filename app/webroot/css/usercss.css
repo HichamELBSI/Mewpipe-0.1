@@ -10,7 +10,7 @@ body {
 
 /* Profile container */
 .profile {
-    margin: 20px 0;
+    margin: 0px 0;
 }
 
 /* Profile sidebar */
@@ -42,7 +42,6 @@ body {
 }
 
 .profile-usertitle-job {
-    text-transform: uppercase;
     color: #5b9bd1;
     font-size: 12px;
     font-weight: 600;

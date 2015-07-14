@@ -26,6 +26,10 @@
  */
 	Router::connect('/', array('controller' => 'homes', 'action' => 'index', 'index'));
 
+	
+	Router::mapResources('videos');
+	Router::parseExtensions();
+
 
 /**
  * Load all plugin routes. See the CakePlugin documentation on

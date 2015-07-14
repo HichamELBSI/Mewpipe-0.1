@@ -24,10 +24,12 @@
 			  <input type="text" readonly value="<?php echo Router::url($this->Html->url( null, true ), true); ?>" class="form-control" style="background-color:white;"aria-describedby="basic-addon1">
 			</div>
 			<div class="btn-group">
+
 				<?php echo $this->SocialShare->link('facebook',__('facebook'),null,array('class'=>'btn btn-primary','style'=>'margin-top:5px;'));?>
 				<?php echo $this->SocialShare->link('twitter',__('twitter'),null,array('class'=>'btn btn-info','style'=>'margin-top:5px;'));?>
 				<?php echo $this->SocialShare->link('gplus',__('Google+'),null,array('class'=>'btn btn-danger','style'=>'margin-top:5px;'));?>
 				<?php echo $this->SocialShare->link('linkedin',__('linkedin'),null,array('class'=>'btn btn-primary','style'=>'margin-top:5px;'));?>
+				
 			</div>
 		</div>
 		<div class="thumbnail" style="margin:0;background-color: #FAFAFA;border-radius: 0;">
@@ -72,7 +74,7 @@
 
 	<?php echo $this->Html->link(
 	    '<div class="thumbnail" style="display: inline-block;margin-bottom: 5px;width: 100%;">
-			<video id="video" style="float:left;margin-right: 5px;" width="30%">
+			<video id="video" preload="metadata" style="float:left;margin-right: 5px;" width="30%">
 			  <source src="'. $v['url'] . '" type="video/mp4">
 				Your browser does not support the video tag.
 			</video>
@@ -86,12 +88,4 @@
 				<?php endforeach; ?>
 			</div>
 		</div>
-
-		<script type="text/javascript">
-			$( document ).ready(function() {
-		  		$('#video').load(function() {
-		  			
-		  		})
-			});
-		</script>
 <?php endif; ?>
