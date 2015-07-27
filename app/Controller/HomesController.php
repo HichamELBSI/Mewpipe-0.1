@@ -27,6 +27,7 @@
 		$d['videos'] = $this->paginate('Video');
 
 		$d['sharedVideos'] = $this->Video->find('all', 
+			
 			array('order' =>array('Video.share DESC'),'limit' => 10),
 			array('conditions' => array(
 					"Video.status " => 0
@@ -99,9 +100,23 @@
 		$this->Video->save($d['selected']);
         $this->set($d);
 	}
-
 	public function upload() {
-		
+		if(!empty($this->request->data)) {
+			$this->request->data['Video']['users_id'] = $this->Auth->user()['id'];
+			$extension = strtolower(pathinfo($this->request->data['Video']['video_file']['name'], PATHINFO_EXTENSION));
+			if(!empty($this->request->data['Video']['video_file']['tmp_name']) && 
+				in_array($extension, array('mp4'))) {
+				move_uploaded_file(
+					$this->request->data['Video']['video_file']['tmp_name'], 
+					IMAGES . 'videos' . DS . $this->request->data['Video']['video_file']['name']);
+				$this->request->data['Video']['url'] = 
+				'http://localhost/Mewpipe-1.0/app/webroot/img/videos/'.
+				$this->request->data['Video']['video_file']['name'];
+				$this->Video->save($this->request->data['Video']);
+				$this->redirect('/users/user');
+			} else if(!empty($this->request->data['Video']['video_file']['tmp_name'])){
+				$this->set('error','Impossible d\'upload cette vidéo. Veuillez selectionner un bon format de vidéo MP4');
+			}
+		}
 	}
-
 } ?>

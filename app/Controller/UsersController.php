@@ -8,7 +8,7 @@ class UsersController extends AppController
     /*La fonction beforeFilter() est exécutée avant chaque action du controller. C’est un endroit pratique pour vérifier le statut d’une session ou les permissions d’un utilisateur.*/
     public function beforeFilter()
     {
-        $this->Auth->allow('add', 'logout', 'login2');
+        $this->Auth->allow('add', 'logout');
         parent::beforeFilter();
     }
 
@@ -119,7 +119,6 @@ class UsersController extends AppController
                     'mail'=>$this->request->data['User']['mail']);
 
         if ($this->request->is('post') || $this->request->is('put')) {
-            var_dump($this->request->data);
             if ($this->User->save($user)) {
                 $this->Session->setFlash(__('L\'user a été sauvegardé'));
                 $this->Auth->logout();

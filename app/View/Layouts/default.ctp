@@ -7,6 +7,7 @@
     <link rel="stylesheet" type="text/css" href="<?php echo $this->Html->url('/css/logincss.css'); ?>">
       <link rel="stylesheet" type="text/css" href="<?php echo $this->Html->url('/css/usercss.css'); ?>">
       <link rel="stylesheet" type="text/css" href="<?php echo $this->Html->url('/css/login.css'); ?>">
+      <?php echo $this->Html->meta('icon', $this->Html->url('/favicon.png'));?>
       <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
       <script type="text/javascript" src="<?php echo $this->Html->url('/js/loginjs.js'); ?>"></script>
     <title><?php echo $title_for_layout; ?></title>
@@ -56,8 +57,10 @@
       <?php echo $content_for_layout ?>
     </div>
 
-    <?php echo $this->Html->script('jquery-1.11.3.min.js'); ?>
+    <?php echo $this->Html->script('jquery-1.11.3.min'); ?>
+    <?php echo $this->Html->script('jquery.form.min'); ?>
     <?php echo $this->Html->script('bootstrap.min'); ?>
+    <?php echo $this->Html->script('bootstrap-filestyle.min'); ?>
 
   <?php echo $this->Html->script('facebook'); ?>
   </body>

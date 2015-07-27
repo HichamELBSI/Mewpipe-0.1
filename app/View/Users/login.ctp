@@ -46,7 +46,7 @@
                 </div>
                 <div class="form-group">
                     <label for="inputPassword" class="sr-only">Mail</label>
-                    <?= $this->Form->input('mail', array('id'=>'create-mail','class' => 'form-control', 'placeholder'=>'Password', 'div'=>false)); ?>
+                    <?= $this->Form->input('mail', array('id'=>'create-mail','class' => 'form-control', 'placeholder'=>'Mail', 'div'=>false)); ?>
                 </div>
                 <?= $this->Form->end(array('label' => 'Sign up', 'class'=>'btn btn-lg btn-primary btn-block', 'div'=>false));?>
             </div>

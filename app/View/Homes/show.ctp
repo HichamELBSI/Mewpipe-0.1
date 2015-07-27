@@ -13,6 +13,13 @@
 			</video>
 		</div>
 		<div style="background-color: white;padding: 9px;margin-bottom: 5px;border: 1px solid rgba(0,0,0,0.1);">
+			<?php if($selected['users_id'] == $user['id']):?>
+				<a href="<?= $this->Html->url('/videos/edit/'.$selected['id']);?>" class="btn btn-default" style="
+				    float: right;
+				    margin-left: 10px;
+				    font-weight: bold;
+				">Edit</a>
+			<?php endif;?>
 			<h2 style="margin-top:0;"><?php echo $selected['name']; ?>
 				<p style="outline:none;text-decoration:none;text-align: right;float: right;font-size: 18px;line-height: 36px;">
 					<?=$selected['views'];?> vues
@@ -24,7 +31,6 @@
 			  <input type="text" readonly value="<?php echo Router::url($this->Html->url( null, true ), true); ?>" class="form-control" style="background-color:white;"aria-describedby="basic-addon1">
 			</div>
 			<div class="btn-group">
-
 				<?php echo $this->SocialShare->link('facebook',__('facebook'),null,array('class'=>'btn btn-primary','style'=>'margin-top:5px;'));?>
 				<?php echo $this->SocialShare->link('twitter',__('twitter'),null,array('class'=>'btn btn-info','style'=>'margin-top:5px;'));?>
 				<?php echo $this->SocialShare->link('gplus',__('Google+'),null,array('class'=>'btn btn-danger','style'=>'margin-top:5px;'));?>
