@@ -49,9 +49,23 @@
                     <legend>Videos</legend>
                     <div class="row">
                         <?php foreach($videos as $k=>$v): $v = current($v) ?>
-                        <div class="col-xs-6 col-md-3">
-                            <?php echo $this->Html->link($v['name'], array('action'=>'show',$v['id'],'class'=>'thumbnail')); ?>
-                            <?php echo $this->Html->link($this->Html->media($v['url'],array('width'=>'100%','preload'=>'metadata')), array('controller'=>'homes','action'=>'show',$v['id']),array('escape' => false)); ?>
+                        <div class="col-xs-6 col-md-3" style="margin: 0 5px;">
+                            <?php echo $this->Html->link($v['name'], 
+                                array('action'=>'show', $v['id'], 'class'=>'thumbnail')); ?>
+                            <?php echo $this->Html->link(
+                                $this->Html->media($v['url'],
+                                    array(
+                                        'style'=>'background:#eee;',
+                                        'height'=>'100px',
+                                        'width'=>'200px',
+                                        'preload'=>'metadata'
+                                    )), 
+                                    array(
+                                        'controller'=>'homes',
+                                        'action'=>'show',
+                                        $v['id']
+                                    ),
+                                    array('escape' => false)); ?>
                         </div>
                         <?php endforeach; ?>
                     </div>

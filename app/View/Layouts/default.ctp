@@ -38,8 +38,7 @@
                     'class' => 'btn btn-default',
                     'style'=>'border-radius:0px;',
                     'div' => false
-                );
-            echo $this->Form->end($options); ?>
+                );            echo $this->Form->end($options); ?>
           <a href="<?php echo $this->Html->url('/homes/upload'); ?>" style="margin-right: 5px;border-radius:0px;" class="btn btn-success navbar-btn navbar-right">Upload</a>
           <?php if (AuthComponent::user('id')): ?>
             <a href="<?php echo $this->Html->url('/users/logout'); ?>" style="margin-right: 5px;border-radius:0px;"  class="btn btn-default navbar-btn navbar-right">Log out</a>

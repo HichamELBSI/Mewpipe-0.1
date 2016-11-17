@@ -34,5 +34,11 @@
 }
 
 #home-color a {
-  color:white;
+  color: #555;
+  text-decoration: none;
+  outline: none;
+}
+
+#home-color a:hover {
+  color: black;
 }
